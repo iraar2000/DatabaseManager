@@ -1,0 +1,2 @@
+﻿USERID,FIRSTNAME,MIDDLENAME,LASTNAME,PHONENUMBER,PROFILEID,PASSWORD
+0,Iradukunda,,Arsene,+250 784663554,C:\Win32Study\DBManager\DatabaseManager\Resources\Example_profile.jpg,arsene
