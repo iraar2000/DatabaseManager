@@ -38,6 +38,7 @@ namespace DatabaseManager.View
         void viewLoginPassword(bool View);
         void viewCreatePassword(bool View);
         void setProfilePath(string ProfilePath);
+        void setVisibility(string  Visibility);
         
 
     }

@@ -1,2 +1,5 @@
 ﻿USERID,FIRSTNAME,MIDDLENAME,LASTNAME,PHONENUMBER,PROFILEID,PASSWORD
 0,Iradukunda,,Arsene,+250 784663554,C:\Win32Study\DBManager\DatabaseManager\Resources\Example_profile.jpg,arsene
+10,Ishimwe,,Armel,+250 784663554,C:\Win32Study\DBManager\DatabaseManager\Resources\Example_profile.jpg,armel
+1,Mugisha,,Joshua,+250 789345785,C:\Win32Study\DBManager\DatabaseManager\Resources\Example_profile.jpg,joshua
+2,Niwemukiza,maniraguha,bertrand,+250 789345444,C:\Win32Study\DBManager\DatabaseManager\Resources\Example_profile.jpg,bertrand

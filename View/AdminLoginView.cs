@@ -113,5 +113,14 @@ namespace DatabaseManager
             ProfilePanel.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
+        public void setVisibility(string Visibility)
+        {
+            switch (Visibility)
+            {
+                case "Show": Visible = true;  break;
+                case "Hide": Visible = false; break;
+            }
+        }
+
     }
 }

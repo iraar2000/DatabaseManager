@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DatabaseManager.View
 {
-    public interface IDashboard
+    public interface IDashboardView
     {
         //
         // Menu button accessors
@@ -22,6 +23,8 @@ namespace DatabaseManager.View
         event EventHandler PDFButtonClicked;
         event EventHandler SearchButtonClicked;
         string SearchData { get; }
+        void setVisibility(string visibility);
+        void setDataTable(DataTable table);
 
     }
 }

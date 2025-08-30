@@ -14,15 +14,25 @@ namespace DatabaseManager.Presentation
         private readonly IAdminLoginView _adminLoginView;
         private readonly AdminLoginServices _adminLoginServices;
         private AdminLoginModel _adminLoginModel;
+        private IDashboardView _dashboardView;
+        private DashboardPresent _dashboardPresent;
+        private DashboardModel _dashboardModel;
 
         public AdminLoginPresent(IAdminLoginView AdminLoginView, AdminLoginServices adminLoginServices,AdminLoginModel adminLoginModel) 
         {
             //
-            // data initialization
+            // data initialization adminLogin form
             //
             _adminLoginView = AdminLoginView;
             _adminLoginModel = adminLoginModel;
             _adminLoginServices = adminLoginServices;
+
+            //
+            // data initialization dashboard form
+            //
+            // _dashboardView = new DashboardView();
+            // _dashboardModel = new DashboardModel(_adminLoginServices.getAccounts);
+            // _dashboardPresent = new DashboardPresent(_dashboardModel, _dashboardView);
             
             //
             // Event Subscription
@@ -32,6 +42,7 @@ namespace DatabaseManager.Presentation
             _adminLoginView.loginShowPswdChecked += OnLoginCheckBoxClicked;
             _adminLoginView.createShowPswdChecked += OnCreateCheckBoxClicked;
             _adminLoginView.selectProfileBtnClicked += OnSelectProfileBtnClicked;
+
         }
 
         public void OnCreateClicked(object sender, EventArgs e)
@@ -74,6 +85,12 @@ namespace DatabaseManager.Presentation
             _adminLoginServices.ReadAccountFile();
             if (_adminLoginServices.LoginVerification(_adminLoginView.UserID, _adminLoginView.loginPassword))
             {
+                _dashboardView = new DashboardView();
+                _dashboardModel = new DashboardModel(_adminLoginServices.getAccounts);
+                _dashboardPresent = new DashboardPresent(_dashboardModel, _dashboardView);
+
+                _adminLoginView.setVisibility("Hide");
+                _dashboardView.setVisibility("Show");
                 MessageBox.Show($" Successfully Logged in! ");
             }
         }

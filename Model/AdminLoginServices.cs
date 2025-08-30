@@ -21,7 +21,14 @@ namespace DatabaseManager.Model
         private int  _countID = 0;
                 
         public List<AccountModel> getAccounts => accountList.ToList();
-        public bool LoginVerification(string UserID, string Password) => accountList.Any(u => u.UserID == UserID && u.Password == Password);
+        public bool LoginVerification(string UserID, string Password)
+        {
+            for (int acc = 0; acc < accountList.Count; acc++)
+            {
+                if (accountList[acc].UserID == UserID && accountList[acc].Password == Password) { return true; break; }
+            } 
+            return false;
+        }
 
         public AdminLoginServices(string filePath)
         {
@@ -49,30 +56,10 @@ namespace DatabaseManager.Model
         //
         public void ReadAccountFile()
         {
-            List<String> fileLineTempData = new List<String>();
-            List<String> accountModelData = new List<String>();
-
-            fileLineTempData = _accountStorageAccess.ReadFile();
-
-            foreach (String fileLine in fileLineTempData.GetRange(1, fileLineTempData.Count-1))
+            foreach(AccountModel account in _accountStorageAccess.ReadFile())
             {
-                //
-                // the fileline is in range from 1 : fileLineNbrCounts
-                // the file title and column names are at index 0 0f the file
-                //
-                AccountModel account = new AccountModel();
-                accountModelData = fileLine.Split(',').ToList();
-                account.UserID = accountModelData[0];
-                account.FirstName = accountModelData[1];
-                account.MiddleName = accountModelData[2];
-                account.LastName = accountModelData[3];
-                account.PhoneNumber = accountModelData[4];
-                account.Profile = accountModelData[5];
-                account.Password = accountModelData[6];
                 accountList.Add(account);
-                accountModelData.RemoveRange(0,accountModelData.Count);
-            }
-           
+            }        
         }
 
         //

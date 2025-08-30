@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DatabaseManager.View
 {
-    public partial class DashboardView : Form, IDashboard
+    public partial class DashboardView : Form, IDashboardView
     {
         public DashboardView()
         {
@@ -37,5 +32,29 @@ namespace DatabaseManager.View
         public event EventHandler PDFButtonClicked;
         public event EventHandler SearchButtonClicked;
         public string SearchData => SearchTextBox.Text;
+        public void setVisibility(string Visibility)
+        {
+            switch (Visibility)
+            {
+                case "Show": Visible = true; break;
+                case "Hide": Visible = false; break;
+                case "Close": this.Close(); break;
+            }
+        }
+
+        private void DashboardView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void setDataTable(DataTable table)
+        {
+            appDataTable.DataSource = table;
+        }
+
+        private void appDataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseManager.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace DatabaseManager.Data
         //
         // reading file
         // 
-        List<string> ReadFile();
-        List<string> ReadFile(string path);
+        List<AccountModel> ReadFile();
+        List<AccountModel> ReadFile(string path);
 
         //
         // writing file

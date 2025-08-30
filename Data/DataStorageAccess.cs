@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using DatabaseManager.Model;
 
 namespace DatabaseManager.Data
 {
@@ -22,34 +24,54 @@ namespace DatabaseManager.Data
         // Reading a file's data
         //
 
-        public List<string> ReadFile(string Path)
-        { 
-            List<string> Data = new List<string>();
+        public List<AccountModel> ReadFile(string Path)
+        {
+            List<AccountModel> accountModels = new List<AccountModel>();
             string Line;
             using (StreamReader Reader = new StreamReader(Path))
             {
                 while ((Line = Reader.ReadLine()) != null)
-                { 
-                    Data.Add(Line);
+                {
+                    List<string> lineData = Line.Split(',').ToList();
+                    AccountModel account = new AccountModel();
+                    account.UserID = lineData[0];
+                    account.FirstName = lineData[1];
+                    account.MiddleName = lineData[2];
+                    account.LastName = lineData[3];
+                    account.PhoneNumber = lineData[4];
+                    account.Profile = lineData[5];
+                    account.Password = lineData[6];
+
+                    accountModels.Add(account);
                 }
             }
 
-            return Data;
+            return accountModels;
         }
 
-        public List<string> ReadFile()
+        public List<AccountModel> ReadFile()
         {
-            List<string> Data = new List<string>();
+            List<AccountModel> accountModels = new List<AccountModel>();
             string Line;
             using (StreamReader Reader = new StreamReader(filePath))
             {
                 while ((Line = Reader.ReadLine()) != null)
                 {
-                    Data.Add(Line);
+                    List<string> lineData = Line.Split(',').ToList();
+                    AccountModel account = new AccountModel();
+                    account.UserID = lineData[0];
+                    account.FirstName = lineData[1];
+                    account.MiddleName = lineData[2];
+                    account.LastName = lineData[3];
+                    account.PhoneNumber = lineData[4];
+                    account.Profile = lineData[5];
+                    account.Password = lineData[6];
+
+                    accountModels.Add(account);
                 }
             }
 
-            return Data;
+            return accountModels;
         }
 
         //
